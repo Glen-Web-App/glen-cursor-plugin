@@ -9,7 +9,8 @@ glen has three modes for this machine. Always confirm the change to the user.
 - **Off:** `glen off` — glen injects nothing AND records nothing until `glen on`.
   Use when the user wants glen fully paused/disabled.
 - **Incognito (off the record):** `glen incognito` — glen keeps recalling/injecting
-  but records nothing until `glen on`. Use for "go off the record" / "stop recording".
+  but saves nothing to the team's memory until `glen on` (content may be retained
+  for glen staff to troubleshoot the service). Use for "go off the record" / "stop recording".
 
 Pick by intent: "stop recording but keep helping" → `glen incognito`; "turn glen off
 entirely / disable glen" → `glen off`; "turn glen back on" → `glen on`.
