@@ -1,18 +1,29 @@
 ---
 name: controls
-description: Control glen memory for this machine - turn glen on/off, go off the record (incognito), toggle glen's skill suggestions, or switch which organization's memory is active. Use ONLY when the user explicitly asks (e.g. "turn glen off", "go off the record", "stop recording", "stop suggesting skills", "don't recommend skills", "switch to my personal org").
+description: Control glen memory for this machine - turn glen on/off, go off the record (incognito), go silent (keep recording, surface nothing), toggle glen's skill suggestions, or switch which organization's memory is active. Use ONLY when the user explicitly asks (e.g. "turn glen off", "go off the record", "stop recording", "stop suggesting skills", "just record, don't inject anything", "switch to my personal org").
 ---
 
-glen has three modes for this machine. Always confirm the change to the user.
+glen has four modes for this machine. Always confirm the change to the user.
 
 - **On:** `glen on` — glen injects context and records everything (the default).
 - **Off:** `glen off` — glen injects nothing AND records nothing until `glen on`.
   Use when the user wants glen fully paused/disabled.
 - **Incognito (off the record):** `glen incognito` — glen keeps recalling/injecting
   but records nothing until `glen on`. Use for "go off the record" / "stop recording".
+- **Silent:** `glen silent` — glen keeps recording everything but surfaces
+  nothing: no recall, no suggestions, and `glen search` returns nothing, until
+  `glen on`. **Account-wide and server-enforced** (the server returns empty
+  results for every machine, agent, and connected client; the same switch lives
+  on the dashboard's Memories page). Use for "just collect / stay out of my
+  way / record but don't inject".
 
-Pick by intent: "stop recording but keep helping" → `glen incognito`; "turn glen off
-entirely / disable glen" → `glen off`; "turn glen back on" → `glen on`.
+`glen on`, `glen incognito`, and `glen silent` need to reach the glen server (the
+server is the source of truth); if the command fails, the mode did NOT change —
+tell the user.
+
+Pick by intent: "stop recording but keep helping" → `glen incognito`; "record but
+don't help/inject" → `glen silent`; "turn glen off entirely / disable glen" →
+`glen off`; "turn glen back on" → `glen on`.
 
 - Skill nudges (two per-user toggles, both on by default):
   `glen suggestions skill-create off` stops glen suggesting that finished work be
