@@ -11,8 +11,10 @@ user what changed.
   then run `glen install` (it sets up the plugin + hooks for this agent).
 - `status: cli=<x> latest=<y> channel=<...>` where y is newer than x → run
   `glen update` (updates the CLI and any installed glen plugins in one go).
-- `status: login=missing ...` → run `glen login` — tell the user a browser
-  window will open to connect their account.
+- `status: login=missing ...` → run `glen login` — a browser window opens with
+  a short device code prefilled; the user approves it to connect their account.
+  If no browser can open (SSH/headless), relay the printed URL and code so the
+  user can approve from any device.
 - `status: login=ok org=missing` → run `glen org list`, show the user the
   options, and run `glen org switch <slug>` for their choice. Never pick an
   org for them.
