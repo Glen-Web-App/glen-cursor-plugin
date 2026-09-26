@@ -6,17 +6,17 @@ whole team's agents share the same institutional knowledge. Recall is on demand 
 
 ## What it does
 
-When you use Cursor, the glen plugin fires four hooks:
+When you use Cursor, the glen plugin fires these hooks:
 
-- **sessionStart** — announces the session to glen, injects glen's status line
+- **sessionStart** — injects glen's status line
   (org, recording mode) and a nudge to run `glen search` when the user references
   past team work. No team memory is injected here.
 - **beforeSubmitPrompt** — captures your prompt (plus workspace context: repo,
   branch, agent name) to your glen org before each turn.
 - **afterAgentResponse** — captures the completed turn (user prompt + assistant
   response) to your glen org after each turn.
-- **afterShellExecution** — detects GitHub PR URLs in shell output and records
-  PR links and commit anchoring to your glen org.
+- **afterShellExecution** — after a `git commit`, links the commit to the session
+  in glen.
 
 Because Cursor hooks cannot inject per-turn context the way Claude Code can,
 glen cannot inject team memory automatically. Recall is exclusively on demand:
@@ -24,8 +24,8 @@ run `glen search "<topic>"` in the shell and treat the output as team memory.
 The bundled `rules/glen.md` nudges the agent to do this whenever the user
 references past team work. Capture (recording turns) is automatic on every turn.
 
-Nothing is sent while incognito mode is on (`glen incognito on`). Glen never reads your
-filesystem directly — only what you send via prompts and assistant turns.
+`glen off` records nothing. In incognito (`glen incognito`) nothing is recorded to
+team memory. Glen reads only the hook input and git metadata for the current repo.
 
 ## Skills
 
@@ -33,8 +33,9 @@ The plugin ships skills the agent invokes on demand, including:
 
 - **search** — search the team's shared glen memory for a specific fact,
   decision, or past discussion.
-- **controls** — go off the record (incognito) or switch which
-  organization's memory is active, only when you explicitly ask.
+- **controls** — turn glen on/off, go off the record (incognito), go silent,
+  toggle skill suggestions, or switch which organization's memory is active —
+  only when you explicitly ask.
 - **setup** — set up, fix, or update glen on this machine. If glen is ever
   broken (not connected, no org selected, hooks missing), just ask the agent to
   "set up glen" and it repairs whatever `glen doctor` reports.
@@ -73,8 +74,9 @@ On every `beforeSubmitPrompt` hook, glen sends to your glen org:
 
 On every `afterAgentResponse` hook, glen captures the completed turn (prompt + response).
 
-**Nothing is sent while incognito is on.** Recall still works — glen fetches relevant
-memories but writes nothing back. Toggle with `glen incognito on` / `glen incognito off`.
+**Nothing is recorded while incognito is on.** `glen search` still works, but nothing
+is written to team memory. Admin analytics still count your prompts as numbers only.
+Toggle with `glen incognito` / `glen on`. `glen off` records nothing.
 
 Glen never sends data to any third party. All memory is stored in your org's private
 glen instance.
@@ -84,7 +86,7 @@ glen instance.
 The plugin updates via the Cursor marketplace auto-refresh (the marketplace repo has
 Auto Refresh enabled; Cursor re-indexes within ~10 minutes of a push).
 
-The glen CLI itself checks for updates daily in the background and upgrades
+The glen CLI itself checks for updates hourly in the background and upgrades
 automatically when installed via npm global. To update everything manually:
 
 ```sh
@@ -95,7 +97,7 @@ glen update
 
 ## Troubleshooting
 
-**Check session status (org, incognito):**
+**Check session status (org, mode):**
 
 ```sh
 glen status
