@@ -5,7 +5,9 @@ description: Set up, fix, or update glen on this machine. Use when the user asks
 
 Run `glen doctor` first and branch on its `status:` lines. Fix ONLY what is
 broken, in this order, then re-run `glen doctor` to verify and confirm to the
-user what changed.
+user what changed. After the `status:` lines, doctor lists problems: `error:`
+(broken) and `warning:` (worth fixing) lines, each with a `fix:` line under it,
+then `hint:` lines for things that may not apply. It still exits 0.
 
 - `glen: command not found` → install the CLI: `npm install -g @tryglen/cli`,
   then run `glen install` (it sets up the plugin + hooks for this agent).
