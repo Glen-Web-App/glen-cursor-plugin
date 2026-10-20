@@ -1,8 +1,8 @@
 {
   "name": "glen",
   "displayName": "Glen",
-  "version": "0.11.9",
-  "description": "Shared team memory for coding agents — automatic capture on every turn and team-memory recall via the glen CLI.",
+  "version": "0.11.10",
+  "description": "Shared team memory for coding agents: automatic capture on every turn and team-memory recall via the glen CLI.",
   "author": { "name": "Glen" },
   "homepage": "https://tryglen.com",
   "repository": "https://github.com/Glen-Web-App/glen-cursor-plugin",

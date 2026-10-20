@@ -13,7 +13,7 @@ then `hint:` lines for things that may not apply. It still exits 0.
   then run `glen install` (it sets up the plugin + hooks for this agent).
 - `status: cli=<x> latest=<y> channel=<...>` where y is newer than x → run
   `glen update` (updates the CLI and any installed glen plugins in one go).
-- `status: login=missing ...` → run `glen login` — a browser window opens with
+- `status: login=missing ...` → run `glen login`. A browser window opens with
   a short device code prefilled; the user approves it to connect their account.
   If no browser can open (SSH/headless), relay the printed URL and code so the
   user can approve from any device.

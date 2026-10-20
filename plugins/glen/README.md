@@ -1,21 +1,21 @@
-# glen — Cursor plugin
+# glen: Cursor plugin
 
 Shared team memory for coding agents. Glen automatically captures what you build so your
-whole team's agents share the same institutional knowledge. Recall is on demand — run
+whole team's agents share the same institutional knowledge. Recall is on demand: run
 `glen search "<topic>"` to pull relevant team memory into the session.
 
 ## What it does
 
 When you use Cursor, the glen plugin fires these hooks:
 
-- **sessionStart** — injects glen's status line
+- **sessionStart**: injects glen's status line
   (org, recording mode) and a nudge to run `glen search` when the user references
   past team work. No team memory is injected here.
-- **beforeSubmitPrompt** — captures your prompt (plus workspace context: repo,
+- **beforeSubmitPrompt**: captures your prompt (plus workspace context: repo,
   branch, agent name) to your glen org before each turn.
-- **afterAgentResponse** — captures the completed turn (user prompt + assistant
+- **afterAgentResponse**: captures the completed turn (user prompt + assistant
   response) to your glen org after each turn.
-- **afterShellExecution** — after a `git commit`, links the commit to the session
+- **afterShellExecution**: after a `git commit`, links the commit to the session
   in glen.
 
 Because Cursor hooks cannot inject per-turn context the way Claude Code can,
@@ -31,12 +31,12 @@ team memory. Glen reads only the hook input and git metadata for the current rep
 
 The plugin ships skills the agent invokes on demand, including:
 
-- **search** — search the team's shared glen memory for a specific fact,
+- **search**: search the team's shared glen memory for a specific fact,
   decision, or past discussion.
-- **controls** — turn glen on/off, go off the record (incognito), go silent,
-  toggle skill suggestions, or switch which organization's memory is active —
+- **controls**: turn glen on/off, go off the record (incognito), go silent,
+  toggle skill suggestions, or switch which organization's memory is active,
   only when you explicitly ask.
-- **setup** — set up, fix, or update glen on this machine. If glen is ever
+- **setup**: set up, fix, or update glen on this machine. If glen is ever
   broken (not connected, no org selected, hooks missing), just ask the agent to
   "set up glen" and it repairs whatever `glen doctor` reports.
 
@@ -60,7 +60,7 @@ The plugin ships skills the agent invokes on demand, including:
 
    (Or install from cursor.com/marketplace once glen is listed.)
 
-There is no CLI command to install Cursor plugins — installation happens in the
+There is no CLI command to install Cursor plugins; installation happens in the
 editor. `glen install --agent cursor` prints these same instructions.
 
 ## What data is sent
@@ -113,7 +113,7 @@ glen status
 glen doctor
 ```
 
-**Broken setup?** Ask the agent to "set up glen" — the bundled setup skill
+**Broken setup?** Ask the agent to "set up glen"; the bundled setup skill
 runs `glen doctor` and fixes whatever it reports.
 
 **Stale update lock** (if `glen update` hangs): remove the lock file and retry:
