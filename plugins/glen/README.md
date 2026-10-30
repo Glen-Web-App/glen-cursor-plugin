@@ -123,6 +123,11 @@ rm -rf ~/.glen/update.lock
 glen update
 ```
 
+**Cursor's CLI (`agent`) on Windows blocks every shell command, citing a hook:** you
+started it from Git Bash. Cursor's Windows CLI runs hooks through bash, and they fail,
+when Git Bash's `MSYSTEM` is set (a known Cursor bug). Start `agent` from PowerShell,
+Command Prompt or Windows Terminal instead. The Cursor app isn't affected.
+
 **No active organization error:** run `glen org switch` to select an org, or
 `glen org list` to see your memberships. If the list itself fails with an auth error,
 run `glen login` to reconnect.
