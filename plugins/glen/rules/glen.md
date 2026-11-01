@@ -11,5 +11,11 @@ about X"), run `glen search "<topic>"` in the shell and treat its answer, plus t
 
 - If `glen search` prints "No active organization", tell the user to run
   `glen org switch`. If glen is not set up, offer the glen setup skill.
-- When you share a GitHub pull request URL, also surface its Glen review link
-  (https://app.tryglen.com/<owner>/<repo>/pull/<number>).
+- After you create or share a GitHub pull request from a clone of its repo, ask the
+  user if they'd like to review it in Glen's local reviewer. If yes, run
+  `glen review <number> --detach` from this repo and share the URL it prints.
+  If it says the PR changes its packages, ask the user before rerunning with
+  `--install-deps`.
+- For a pull request from a repo with no clone here, ask the user "Clone
+  <owner>/<repo> to review this PR?" first, and pass `--clone` to
+  `glen review <url>` only after they say yes.
