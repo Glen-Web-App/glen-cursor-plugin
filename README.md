@@ -1,5 +1,3 @@
-> **Generated repository.** Source of truth: the glen monorepo (`packages/cursor-plugin`). Do not open PRs here.
-
 # glen: Cursor plugin
 
 Shared team memory for coding agents. Glen automatically captures what you build so your
@@ -84,9 +82,6 @@ The glen CLI also reports content-free error codes about itself (error code, com
 versions; never prompts, paths, flag values or content), incognito included. Turn this off with
 `glen telemetry disable` or `DO_NOT_TRACK=1`.
 
-Glen never sends data to any third party. All memory is stored in your org's private
-glen instance.
-
 ## Updating
 
 The plugin updates via the Cursor marketplace auto-refresh (the marketplace repo has
@@ -133,9 +128,3 @@ Command Prompt or Windows Terminal instead. The Cursor app isn't affected.
 **No active organization error:** run `glen org switch` to select an org, or
 `glen org list` to see your memberships. If the list itself fails with an auth error,
 run `glen login` to reconnect.
-
----
-
-> **Note:** This repository is generated from the
-> [glen monorepo](https://github.com/Glen-Web-App/glen) (`packages/cursor-plugin`).
-> Please open pull requests and issues there, not here.
