@@ -52,16 +52,21 @@ The plugin ships skills the agent invokes on demand, including:
    After login your active organization is saved locally. Switch orgs at any time with
    `glen org switch`.
 
-2. In Cursor, type `/add-plugin` in the agent chat and add:
+2. Install the plugin and reload Cursor:
 
+   ```sh
+   glen install --agent cursor
    ```
-   https://github.com/Glen-Web-App/glen-cursor-plugin
-   ```
 
-   (Or install from cursor.com/marketplace once glen is listed.)
+   Cursor has no plugin CLI, so this copies the plugin to
+   `~/.cursor/plugins/local/glen`, the folder Cursor loads local plugins from.
+   Run **Developer: Reload Window** (or restart Cursor) to load it. `glen update`
+   and glen's background updates keep that copy current.
 
-There is no CLI command to install Cursor plugins; installation happens in the
-editor. `glen install --agent cursor` prints these same instructions.
+   If your company manages Cursor and blocks local plugins, add glen from the
+   marketplace instead: type `/add-plugin` in the agent chat and add
+   `https://github.com/Glen-Web-App/glen-cursor-plugin`. Install it one way, not
+   both: with both, every hook runs twice.
 
 ## What data is sent
 

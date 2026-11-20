@@ -37,10 +37,11 @@ then `hint:` lines for things that may not apply. It still exits 0.
   `status: pi=not-found`) when the user says it IS installed → ask them to run
   `which claude` (or `which codex` / `which pi`) in their terminal, then run
   `glen install --claude-path <that path>` (or `--codex-path` / `--pi-path`).
-- `status: cursor=detected plugin=unknown` → tell the user to install the glen
-  plugin inside Cursor: type `/add-plugin` in the editor chat and pick glen (or
-  add the marketplace repo https://github.com/Glen-Web-App/glen-cursor-plugin).
-  There is no CLI install for Cursor plugins.
+- `status: cursor=detected plugin=unknown` → run `glen install --agent cursor`,
+  then tell the user to reload Cursor (Developer: Reload Window, or restart
+  Cursor). If glen still isn't listed under Customize → Plugins after the
+  reload, their Cursor blocks local plugins: tell them to type `/add-plugin` in
+  the editor chat and add https://github.com/Glen-Web-App/glen-cursor-plugin.
 
 Finish with `glen status` and tell the user, in one sentence, what state they
 are in now.
